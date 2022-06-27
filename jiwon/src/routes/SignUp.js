@@ -1,34 +1,34 @@
 import React from 'react';
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-
-const auth = getAuth();
-createUserWithEmailAndPassword(auth)
-  .then((userCredential) => {
-    // Signed in
-    const user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // ..
-  });
-
-const firebase = require('firebase');
-const firebaseui = require('firebaseui');
-
-// Initialize the FirebaseUI Widget using Firebase.
-const Ui = () => (
-    new firebaseui.auth.AuthUI(firebase.auth())
-);
+//have to check out what useRef is 
+import { useRef, useState } from 'react';
+import { signup } from "../env/config";
 
 const SignUp = () => {
+  const [ loading, setLoading] = useState(false);
+
+  //used useRef to get value from front realtime I guess
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
+  async function handleSignUp(){
+    setLoading(true);
+    try{
+      await signup(emailRef.current.value, passwordRef.current.value);
+    } catch {
+      alert("Sign up fail!");
+    }
+    setLoading(false);
+  }
+
+  // watch the vid from 10:38
+  
     return (
         <>
             <div>
-                <Ui/>
-                This is SignUp
+                <input placeholder='Email'/>
+                <input type='password' placeholder='Password'/>
             </div>
+            <button disabled={loading} onClick={handleSignUp}>Sign Up</button>
         </>
     );
 };
