@@ -5,3 +5,4 @@
 ### JJJ
 22/06/26 - working on Sign Up <br />
 22/06/27 - woking on connecting firebase auth to front (in my branch)
+22/06/28 - roughly done sign up page & used github page to deploy
