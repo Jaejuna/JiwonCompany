@@ -11,10 +11,10 @@ const AppRouter = () => {
     return(
         <BrowserRouter basename={process.env.PUBLIC_URL}>
             <Routes>
-                <Route path="/" element={<Empty />} />
-                <Route path="/SignUp" element={<SignUp />} />
-                <Route path="/Login" element={<Login />} />
-                <Route path="/Calender" element={<Calender />} />
+                <Route exact path="/" element={<Empty />} />
+                <Route path="/signup" element={<SignUp />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/calender" element={<Calender />} />
             </Routes>
         </BrowserRouter>
     );
